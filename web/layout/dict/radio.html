@@ -1,0 +1,8 @@
+<div class="form-group">
+		<label class="col-md-$!{data.row_1} control-label" for="inputname">$!{data.dict_name}£º#if($!{data.isnull})<font style="color:#ff0000;">*</font>#end</label>
+    <div class="row col-md-$!{data.row_2}">
+    #foreach($bean in $!{data.resultlist})
+    <div class="radio#if($!{input_row}) col-md-$!{input_row}#else col-md-2#end"><label><input type="radio" name="$!{val_name}" value="$!{bean.key}" #if($!{velocityCount} == 1)checked="checked"#end>$!{bean.value}</label></div>
+		#end
+    </div>
+</div>

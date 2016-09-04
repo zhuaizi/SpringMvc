@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		 version="2.5">
+
+	<!-- 扫描类和org.springframework.web.context.ContextLoaderListener相同 -->
+	<listener>
+		<listener-class>com.forlink.fkcore.sys.SystemContextListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/spring-dao.xml</param-value>
+	</context-param>
+
+	<!-- 建立servlet容器 -->
+	<servlet>
+		<servlet-name>web</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>web</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 单点登录 只有 forlink基础系统用  -->
+	<!-- <filter>
+	  <filter-name>CASFilter</filter-name>
+	  <filter-class>com.forlink.forsso.session.CASFilter</filter-class>
+	  <init-param>
+	    <param-name>moduleName</param-name>
+	    <param-value>apps</param-value>
+	  </init-param>
+	</filter>
+	<filter-mapping>
+	  <filter-name>CASFilter</filter-name>
+	  <url-pattern>*.shtml</url-pattern>
+	</filter-mapping> -->
+	
+	<!-- 设置字符集 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<link rel="stylesheet" href="../../pub/css/defualt.css"/>
+	
+	<!-- kissy的核心，通过loader功能按需加载模块 -->
+	<script type="text/javascript" src="../../pub/kissy/seed-min.js"></script>
+	<script type="text/javascript" src="../../pub/cfg.js"></script>
+	
+</head>
+<body>
+
+<form id="tt">
+	<!-- 
+	1.可以不用写data-msg，不写时使用验证器rule定义时候的消息提示，该属性的值现在改为对象形式，现在可以为每个验证规则添加提示了
+		如：data-rules="{required:true,date:true,dateMaxTo:'2013-11-22'}"  
+		   data-msg="{date:'日期格式不正确，默认格式为yyyy-MM-dd',minDate:'当前日期最小为{0}'}"
+		   这里的required规则没有添加提示消息，则会使用默认的提示信息，注意消息的属性名和规则的属性名对应
+	2.多个验证规则同时作用于一个输入框时，如果不写data-msg则会根据每个规则的默认提示进行提示，但默认提示不一定准确，所以建议自定义提示信息
+	3.每个验证输入框都必须加上msg-type属性，如：msg-type="{type:'bottom',part:12}"，
+		type：表示显示的方式有right右边、bottom下边或tip方式(tip方式尚未实现)
+		part：表示bootstarp的格栅所占的宽度，最大为12
+	4.注意：某些验证规则"可能"有先后顺序，如：data-rules="{date:true,dateMaxTo:'2013-11-22'}"
+	5.注意：验证规则的写法属性为双引号，里面的json串为单引号也可以为双引号。如：data-msg="{regexp:"必须4位数字"}"
+	6.注意：html代码结构必须为：
+		<div class="form-group">
+		    <label class="col-md-3 control-label" for="inputname">商品描述：</label>
+		    <div class="row col-md-8">
+		    	<div class="row"><textarea class="form-control" name="intro" rows="3" style="resize:none;" data-rules="{maxLength:500}" msg-type="{type:'bottom',part:12}"></textarea></div>
+		    </div>
+		</div>
+		否则验证提示信息可能显示位置出现问题，美工的代码结构可能不是这样，需要自己修改，其中col-md-?可以修改，和添加，表示该字段显示的大小
+	 7.以下示例没有按照6的代码结构，只是提供验证规则的说明
+	-->
+
+	<!-- {required:false}的时候将不再进行非空验证 -->
+
+	<label style="float: left;">测试非空验证：</label>
+	<input type="text" data-rules="{required:true}"/>
+	<span class="valid-text"><span class="x-icon x-icon-mini x-icon-error">!</span><em style="color: red;">不能为空！</em></span>
+
+	<label>手机号码验证：</label><input type="text" data-rules="{isMobile:true}"/>
+	<label>电话号码验证：</label><input type="text" data-rules="{isPhone:true}"/>
+	<label>有效的网址验证：</label><input type="text" data-rules="{isUrl:true}"/>
+	<hr />
+	
+	<label>密码：</label><input id='pass_id' type="password"/>
+	<!-- 注意，最好使用id匹配，保证匹配的唯一准确性，注意单引号 -->
+	<label>确认密码：</label><input type="password" data-rules="{equalTo:'#pass_id'}" data-msg="{equalTo:'两次密码不一致'}"/>
+	<hr />
+	
+	<label>最小值验证：</label><input type="text" data-rules="{min:10}" data-msg="{min:'不能小于{0}'}"/>
+	<label>最大值验证：</label><input type="text" data-rules="{max:20}" data-msg="{max:'不能大于{0}'}"/>
+	<hr />
+	
+	<!-- 字符串长度限制，验证会去除字符串两端的空白字符 再判断 -->
+	<label>字符串长度必须为4：</label><input type="text" data-rules="{length:4}"/>
+	<label>字符串长度不小于4：</label><input type="text" data-rules="{minLength:4}"/>
+	<label>字符串长度不大于4：</label><input type="text" data-rules="{maxLength:4}"/>
+	<hr />
+	
+	
+	<!-- 正则表达式验证regexp，如果正则表达式为空，则不进行校验 -->
+	<label>正则表达式验证：</label><input type="text" data-rules="{regexp:/^\d{4}$/}" data-msg="{regexp:'必须4位数字'}"/>
+	<!-- 会对值去除空格，无数据不进行校验，验证值为true或false不影响验证 -->
+	<label>邮箱值：</label><input data-rules="{email:true}" type="text">
+	<hr />
+	
+	<!-- 会对值去除空格，无数据不进行校验只有yyyy-MM-dd或者yyyy-MM-dd HH:mm:ss才是有效日期 -->
+	<label>日期验证：</label><input data-rules="{date:true}" type="text">
+	<label>日期验证(规定固定的格式)：</label><input data-rules="{date:'yyyy-MM-dd'}" type="text">
+	<!-- 最小日期格式只能为yyyy-MM-dd，注意必须要使用单引号 -->
+	<label>日期不小于：</label><input data-rules="{minDate:'2013-09-01'}" type="text">
+	<label>日期不大于：</label><input data-rules="{maxDate:'2013-09-01'}" type="text">
+	
+	<label>日期不小于今天(也可以添加格式)：</label><input data-rules="{minDate:'new Date()'}" type="text">
+	<label>日期不大于今天：</label><input data-rules="{maxDate:'new Date()'}" type="text">
+	
+	<label>日期不大于(并自定义格式，不写格式默认为yyyy-MM-dd)：</label><input data-rules="{maxDate:{date:'2013-09-01',format:'yyyy-MM-dd'}}" type="text">
+	<hr />
+	
+	<!-- 数字验证，数字验证，会对值去除空格，无数据不进行校验，允许千分符，例如： 12,000,000的格式 -->
+	<!-- {number:Boolean}则不限制小数位数 -->
+	<label>数字验证：</label><input data-rules="{number:true}" type="text">
+	<!-- {number:Number}则限制小数位数为Number位，注意必须为整型，如果有千分符，小数位数修正后将没有千分符了 -->
+	<label>数字验证(保留两位小数)：</label><input data-rules="{number:2}" type="text">
+	<hr />
+	
+	<!-- 后面日期不大于前面日期，默认两个日期相等时，验证不通过。目前日期只能精确到天。dateMinTo和dateMaxTo用法一样 -->
+	<label>前面日期：</label><input id="minDateId" data-rules="{date:true}" type="text">
+	<label>后面日期(不允许相等)：</label><input id="minDateId1" data-rules="{dateMaxTo:'#minDateId',date:true}" type="text">
+	<label>后面日期(允许相等)：</label><input data-rules="{dateMaxTo:{ref:'#minDateId',allowEqual:true},date:true}" type="text">
+	<label>后面日期(不允许相等)：</label><input data-rules="{dateMaxTo:'2013-11-22',date:true}" type="text">
+	<label>后面日期(并自定义格式,不写格式默认为yyyy-MM-dd)：</label><input data-rules="{dateMaxTo:{ref:'#minDateId',allowEqual:true,format:'yyyy-MM-dd HH:mm:ss'},date:true}" type="text">
+	<label>大于前两个日期(允许相等)：</label><input data-rules="{dateMaxTo:{ref:['#minDateId','#minDateId1'],allowEqual:true},date:true}" type="text">
+	<hr />
+	
+	<!-- 后面数字不大于前面数字，默认两个数字相等时，验证不通过。numberMinTo和numberMaxTo用法一样 -->
+	<label>前面数字：</label><input id="minNumId" data-rules="{number:true}" type="text">
+	<label>后面数字(不允许相等)：</label><input data-rules="{numberMaxTo:'#minNumId',number:true}" type="text">
+	<!-- allowEqual属性非必须 -->
+	<label>后面数字(允许相等)：</label><input value="55" data-rules="{numberMaxTo:{ref:'#minNumId',allowEqual:true},number:true}" type="text">
+	<hr />
+	
+	<!-- 分组验证，只支持在根元素fieldset或div上添加验证规则 -->
+	<fieldset data-rules="{checkRange:[1,2]}" data-msg="{checkRange:'只能选中{0}到{1}项'}"><legend>只能选中1到2项</legend>
+		<input name="k" type="checkbox" value="aa"/>
+		<input name="k" type="checkbox" value="bb"/>
+		<input name="k" type="checkbox" value="cc"/>
+	</fieldset>
+	
+	<fieldset data-rules="{checkRange:1}" data-msg="{checkRange:'只能选中{0}项'}"><legend>只能选中1项</legend>
+		<input name="k" type="checkbox" value="aa"/>
+		<input name="k" type="checkbox" value="bb"/>
+		<input name="k" type="checkbox" value="cc"/>
+	</fieldset>
+	<fieldset data-rules="{checkRange:[1]}" data-msg="{checkRange:'只能选中{0}项'}"><legend>只能选中1项</legend>
+		<input name="k" type="checkbox" value="aa"/>
+		<input name="k" type="checkbox" value="bb"/>
+		<input name="k" type="checkbox" value="cc"/>
+	</fieldset>
+	
+	<fieldset data-rules="{checkRange:[2,2]}" data-msg="{checkRange:'只能选中{0}项'}"><legend>只能选中2项</legend>
+		<input name="k" type="checkbox" value="aa"/>
+		<input name="k" type="checkbox" value="bb"/>
+		<input name="k" type="checkbox" value="cc"/>
+	</fieldset>
+	<hr/>
+	
+	<!-- 批量添加非空验证 -->
+	<div data-rules="{required:true}">
+		<label>测试批量添加非空验证(<font style="color: red;">当表单验证很复杂的时候不建议使用</font>)：</label><input type="text" />
+		<input type="text" />
+		<input type="text" />
+		<input type="text" />
+	</div>
+	
+	
+	<button id="tttt" type="button">提交</button>
+	
+</form>
+
+
+</body>
+</html>

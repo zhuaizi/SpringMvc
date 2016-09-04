@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="GBK" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx.xsd 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop.xsd
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<!-- 创建一个事务管理器，对事务进行管理。 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- fkcore事务管理添加============================ -->
+	<!-- 配置事务特性 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="find*" read-only="true" rollback-for="java.lang.Exception" />
+			<tx:method name="get*" read-only="true" rollback-for="java.lang.Exception" />
+			<tx:method name="query*" read-only="true" rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置事务切面-->
+	<aop:config>
+		<aop:pointcut id="allManagerMethod1" expression="execution(* com.forlink.fkcore.service..*(..))"/>
+    	<aop:pointcut id="allManagerMethod2" expression="execution(* com.forlink.spex.core.service..*(..))"/>
+    	<aop:pointcut id="allManagerMethod3" expression="execution(* com.forlink.demo.service..*.*(..))"/>
+    	<!-- <aop:pointcut id="allManagerMethod4" expression="execution(* com.forlink.wbap.redis..*.*(..))"/>
+    	<aop:pointcut id="allManagerMethod5" expression="execution(* com.forlink.wbap.pub.tools.BeanUtil..*.*(..))"/> -->
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod1"/>
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod2"/>
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod3"/>
+    	<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod4"/>
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod5"/> -->
+	</aop:config>
+	
+	<!-- 项目中使用基于注解的事务管理方法 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+
+	
+	
+
+	<!-- 此后，我们需要让spring来管理SqlMapClient对象 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:DBPool.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<!-- 对于clob、 blob数据支持 -->
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" lazy-init="true" />
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<ref local="nativeJdbcExtractor" />
+		</property>
+	</bean>
+
+	<!-- 配置数据源  -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db_driver}" />
+		<property name="url" value="${db_url}" />
+		<property name="username" value="${db_user}" />
+		<property name="password" value="${db_pwd}" />
+		<property name="initialSize" value="${initialSize}" />
+		<property name="maxActive" value="${maxActive}" />
+		<property name="maxIdle" value="${maxIdle}" />
+		<property name="maxWait" value="${maxWait}" />
+		<property name="validationQuery" value="${validationQuery}" />
+		<property name="testOnReturn" value="${testOnReturn}" />
+		<property name="testWhileIdle" value="${testWhileIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
+	</bean>
+
+	<!-- 配置Jdbc模板  -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocations">
+			<list>
+				<value>classpath:SqlMapConfig.xml</value>
+			</list>
+		</property>
+		<property name="sqlMapClientProperties">
+			<props>
+				<prop key="contextRealPath">${contextRealPath}</prop>
+			</props>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/sqlMap/**/*.xml</value>
+			</list>
+		</property>
+		<property name="lobHandler" ref="lobHandler" />
+	</bean>
+
+	<!-- 配置dao -->
+	<bean id="abstractDao" abstract="true">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<context:component-scan base-package="com.forlink.*" />
+	
+	
+	<!-- redis 引用 -->
+    <import resource="redis.xml"/>
+</beans>

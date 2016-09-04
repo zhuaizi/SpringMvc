@@ -1,0 +1,7 @@
+<div class="input-group-btn">
+		<select class="form-control#if($!{data.input_row}) col-md-$!{data.input_row}#end" name="$!{data.val_name}">
+			#foreach($bean in $!{data.resultlist})
+			<option value="$!{bean.key}">$!{bean.value}</option>
+			#end
+		</select>
+</div>

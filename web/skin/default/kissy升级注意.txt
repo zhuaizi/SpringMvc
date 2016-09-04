@@ -1,0 +1,10 @@
+以下文件有修改，升级时注意
+kissy/io.js --增加项目特标识，默认utf-8
+kissy/io-min.js
+kissy/date/picker/assets/dpl.css 此文件官方提供的css样式日期框有问题，消除了远程获取的图片地址
+skin/default/etrade/images/mode/T10.uJXc4bXXXXXXXX-19-300.png
+skin/default/etrade/images/mode/T1d4OJXkpxXXXXXXXX-19-300.png  日期控件需要的图片
+menubutton.js --增加borderWidth标识，增加context输入框，及特殊参数
+kissy/dom/base.js --增加
+	var t='t='+S.tag;
+	S.getScript(el.src+(el.src.indexOf('?') > 0 ? '&'+t : '?'+t ));

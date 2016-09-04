@@ -1,0 +1,228 @@
+<div class="leftnavbox" id="menu_list">
+	<img src="$!{gsc.context}/skin/default/etrade/images/mode/tao-loading.gif">
+</div>
+
+<script id="menu_tpl" type="text/template">
+<div class="sort">
+	<div class="sort-list">
+	    <ul class='after-load-sub after-show-sub' id='multi'>
+			<li class="home"><a href="$!{gsc.context}/financeIndex.shtml"class="sort-list-f1"><span>金融服务</span></a></li>
+			<% 
+				for(var i=0;i<menu_list.length;i++){ 
+			       var pmenu = menu_list[i];
+				if(pmenu.menu_no==700||pmenu.menu_no==701){
+			%>
+	
+		      <li <% if(cur_menu_no==pmenu.menu_no){%> class="menu_li selected" <%}else{%> class="menu_li"<%}%>>
+		      	<a href="#" id="menu_<%- pmenu.menu_no %>" menu_no="<%- pmenu.menu_no %>" <% if(pmenu.img_url&&pmenu.img_url!=""){%> class="center-menu <%- pmenu.img_url %>" <%}else{%> class="center-menu sort-list-1"<%}%>>
+		          <span><%- pmenu.menu_name %></span>
+				</a>        
+		      </li>
+	       
+			<%}}%>
+	    </ul>
+
+		<div id="categories-subs">
+			<% 
+				for(var i=0;i<menu_list.length;i++){
+			       var pmenu = menu_list[i];
+			       var childs = pmenu.child;
+			%>
+
+			<div id="menu_show_<%- pmenu.menu_no %>">
+				<div class="ks-popup-content" >
+				    <dl>
+		             	<dt><%- pmenu.menu_name %></dt>
+						<% 
+							for(var j=0;j<childs.length;j++){ 
+               					var cmenu = childs[j];
+    					%>
+		             		<dd <%if(j==childs.length-1){%> class="last" <%}%>>
+							<%if(pmenu.menu_no!=656){if(cmenu.url.indexOf("?") > -1){%>
+								<a href="<%- cmenu.url %>&menu_no=<%- cmenu.menu_no %>"><%- cmenu.menu_name %></a>
+							<%}else{%>
+								<a href="<%- cmenu.url %>?menu_no=<%- cmenu.menu_no %>"><%- cmenu.menu_name %></a>
+							<%}}else{%>
+								<a href="$!{gsc.context}/menu2etrade.shtml?cmno=<%- cmenu.menu_no %>"><%- cmenu.menu_name %></a>
+							<%}%>
+							</dd>
+						<% } %> 
+		             </dl>	
+				</div>		 
+			</div>	 
+		
+			<%}%>
+		</div>  
+
+	</div>
+</div>
+</script>
+
+<script id="menu_tpl2" type="text/template">
+<div class="sort">
+	<div class="sort-list">
+	    <ul class='after-load-sub after-show-sub' id='multi'>
+			<%
+				var cust_type = wel_msg.cust_type;
+				for(var i=0;i<menu_list.length;i++){
+			    	var pmenu = menu_list[i];
+					if( (cust_type == ',270,' && pmenu.menu_no== 702) || (cust_type == ',260,' && pmenu.menu_no== 703)){
+						var childs = pmenu.child;
+						for(var j=0;j<childs.length;j++){
+               					var cmenu = childs[j];
+								
+			%>
+		      <li <% if(cur_menu_no==cmenu.menu_no){%> class="menu_li selected" <%}else{%> class="menu_li"<%}%>>
+		      	<a href="<%- cmenu.url%>?menu_no=<%- cmenu.menu_no %>" id="menu_<%- cmenu.menu_no %>" menu_no="<%- cmenu.menu_no %>" <% if(cmenu.img_url&&cmenu.img_url!=""){%> class="center-menu <%- cmenu.img_url %>" <%}else{%> class="center-menu sort-list-1"<%}%>>
+		          <span><%- cmenu.menu_name %></span>
+				</a>
+		      </li>
+						<%}%>
+					<%}%>
+				<%}%>
+		</ul>
+	</div>
+</div>
+</script>
+
+<script id="member_menu_tpl" type="text/template">
+<% 
+	for(var i=0;i<menu_list.length;i++){ 
+		var pmenu = menu_list[i];
+		if(pmenu.menu_no==659){
+		var childs = pmenu.child;
+	%>
+<div  class="ks-popup-content ">
+  	<div class="kind_inbox" style="padding: 10px;">
+  		<div class="container">
+  			<div class="row">
+  			<div class="col-sm-12 title3" style="font-size:14px; border:none; background:#eef6fd; line-height:35px;"><%- pmenu.menu_name %></div>
+  			</div>
+  			<% 
+				for(var j=0;j<childs.length;j++){ 
+               		var cmenu = childs[j];
+    		%>
+  				<div class="row"><div class="col-sm-12 title3">
+				<%if(cmenu.url.indexOf("?") > -1){%>
+					<a href="<%- cmenu.url %>&menu_no=<%- cmenu.menu_no %>"><%- cmenu.menu_name %></a>
+				<%}else{%>
+   					<a href="<%- cmenu.url %>?menu_no=<%- cmenu.menu_no %>"><%- cmenu.menu_name %></a>
+				<%}%>
+				</div></div>
+				<%if(j==childs.length-1){%>
+   					<p class="line2"></p>
+				<%}%>
+			<%}%>
+		</div>
+
+	</div> 
+</div>
+<%}}%>
+
+</script>
+
+<script id="product_list_tpl" type="text/template">
+<% 
+	for(var i=0;i<product_list.length;i++){ 
+		var plItem = product_list[i];
+	%>
+	<li><a href="<%- plItem.app_index_url %>" class=""><font size="2"><%- plItem.app_name %></font></a> </li>
+<%}%>
+
+</script>
+
+<script type="text/javascript">
+	var context = "$!{gsc.context}";
+	KISSY.use("io,dom,overlay,event,node",
+			function(S, IO, DOM, O, Event, Node) {
+				IO({
+					url : context+'/ucenter/tmenus.shtml',
+					type : 'post',
+					data : {
+						sid : ''
+					},
+					dataType : 'json',
+					success : function(data) {
+						var html;
+						var cust_type = data.wel_msg.cust_type;
+						if(cust_type == ',260,' || cust_type == ',270,'){
+							html = baidu.template('menu_tpl2', data);
+						} else {
+							html = baidu.template('menu_tpl', data);
+						}
+
+						
+						DOM.html('#menu_list', html);
+
+						html = baidu.template('member_menu_tpl', data);
+
+						if (html == '') {
+							DOM.style('#dropmenu_2', 'display', 'none');
+						} else {
+							DOM.html('#dropmenu2', html);
+						}
+						new O.Popup({
+					        srcNode:'#dropmenu3',
+					        trigger : '#dropmenu_3',
+					        triggerType : 'mouse',
+					        align : {
+					            node : '#dropmenu_3',
+					            points : ['br', 'tr'],
+					            offset : [0, 0]
+					        },
+								  listeners:{
+								  	show:function(target){
+								  		if(cust_type == ',270,'){
+											DOM.hide("#jianguancangdan");
+										} else {
+											DOM.show("#jianguancangdan");
+										}
+								  		 DOM.toggleClass("#dropmenu_3","selected");
+								  	},
+								  	hide:function(target){
+								  		 DOM.toggleClass("#dropmenu_3","selected");
+								  	}
+								  }
+					    });
+						S.each(DOM.query('.center-menu'), function(obj, i) {
+							var menu_no = DOM.attr(obj, "menu_no");
+							if (i > DOM.query('.center-menu').length - 3) {
+								new O.Popup({
+									srcNode : '#menu_show_' + menu_no,
+									trigger : '#menu_' + menu_no,
+									triggerType : 'mouse',
+									align : {
+										node : '#menu_' + menu_no,
+										points : [ 'tr', 'tl' ],
+										offset : [ 0, 0 ]
+									}
+								});
+							} else {
+								new O.Popup({
+									srcNode : '#menu_show_' + menu_no,
+									trigger : '#menu_' + menu_no,
+									triggerType : 'mouse',
+									align : {
+										node : '#menu_' + menu_no,
+										points : [ 'tr', 'tl' ],
+										offset : [ 0, 0 ]
+									}
+								});
+							}
+						});
+
+						Event.on('.menu_li', 'mouseenter mouseleave', function(
+								event) {
+							DOM.toggleClass(this, "selected current");
+						});
+						
+						/*产品列表*/
+						var html = baidu.template('product_list_tpl', data);
+						DOM.html('#product_list_ul', html);
+
+					}
+				});
+			});
+</script>
+
+

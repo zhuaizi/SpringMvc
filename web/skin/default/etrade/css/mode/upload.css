@@ -1,0 +1,81 @@
+.ks-editor-ext-loading {
+	    opacity: 0.3;
+	    filter: alpha(opacity = 60);
+	    background: #eee center center no-repeat scroll;
+	    background-attachment: fixed;
+}
+.ks-editor-img-tabs-body {
+    padding: 12px 0 5px 20px;
+}
+.ks-editor-img-tabs-panel {
+    display: none;
+    position: relative;
+}
+.ks-editor-input {
+    border-radius: 2px;
+    background: #FFFFFF repeat-x scroll 0 0;
+    background-image: url("../../images/mode/text-bg.png");
+    border: 1px solid #B5B8C8;
+    height: 24px;
+    line-height: 22px;
+}
+.ks-editor-button {
+    display: inline-block;
+    margin: 2px;
+    border-radius: 2px;
+    padding: 3px 18px;
+    border: 1px solid rgb(193, 200, 209);
+    color: black;
+    vertical-align: middle;
+    white-space: nowrap;
+    box-shadow: 0 1px 1px #E4E4E4;
+    background: #e8ebee repeat-x left top;
+  background-image: url('../../images/mode/T1dyWGFmpbXXaZpXLq-24-613.png');
+  -background-image: url('../../images/mode/T1jsWEFdteXXaZpXLq-24-613.png');
+  background-position: left -0px;
+}
+.ks-editor-button,
+.ks-editor-button {
+    display: inline;
+    zoom: 1;
+    padding-bottom: 2px;
+}
+.ks-editor-button {
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+.ks-editor-button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border-color: rgb(232, 204, 160);
+    background: #f5e7ce repeat-x left top;
+  background-image: url('../etrade/images/mode/T1dyWGFmpbXXaZpXLq-24-613.png');
+  -background-image: url('../etrade/images/mode/T1jsWEFdteXXaZpXLq-24-613.png');
+  background-position: left -26px;
+}
+.ks-editor-button:hover {
+    background: none;
+    border-color: rgb(206, 213, 224);
+}
+.ks-editor-button:active {
+    border-color: #a1badf !important;
+    background-color: #DDE1EB !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

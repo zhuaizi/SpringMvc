@@ -1,0 +1,144 @@
+<div class="footer">
+	<div class="footer_in">时力永联科技有限公司  版权所有</div>
+</div>
+
+<div id="tbox" class="free_floatbox">
+	<div style="position:relative;">
+		<a href="javascript:void(0);" id="zhan_left" class="zhan" title="向左展开" ></a>
+		<a href="javascript:void(0);" id="shou_right" class="zhe" title="向右收起" ></a>
+	</div>   
+	<div id="foldbox">
+		<div class="free_tabnav finance_free_tabnav">
+			<ul>
+				<li><a href="javascript:void(0);" id="footer_kfqq" class="bg3">在线客服</a></li>
+				<li><a id="gotop" href="javascript:void(0);" class="bg5">回顶部</a></li>
+			</ul>
+		</div>   
+	</div>
+</div>
+
+<script type="text/javascript">
+    var project = "$!{gsc.context}";
+	KISSY.use("io,dom,overlay,event,node",function(S,IO,DOM,O,Event, Node) {
+				
+		IO({
+			url : project+'/mycentermsg.shtml',
+			type : 'post',
+			dataType : 'json',
+			success : function(data) {			
+				var msg = data.msg;
+				DOM.html("#unread_msg_count",msg.unread_msg_count);				
+				DOM.html('#dropmenu_1',msg.login_acct+'<span class="arrow"></span>',true);
+				DOM.text('#top_cust_name',msg.cust_name);
+				DOM.text('#top_emp_acct',msg.login_acct);
+				DOM.attr('#top_cr_image',"src", "/filepool"+msg.cr_image);
+				new O.Popup({
+			        srcNode:'#dropmenu1',
+			        trigger : '#dropmenu_1',
+			        triggerType : 'mouse',
+			        align : {
+			            node : '#dropmenu_1',
+			            points : ['bl', 'tl'],
+			            offset : [0, 0]
+			        },
+					listeners:{
+						show:function(target){
+							 DOM.toggleClass("#dropmenu_1","selected");
+						},
+						hide:function(target){
+							 DOM.toggleClass("#dropmenu_1","selected");
+						}
+					}
+			    });
+			    
+			    new O.Popup({
+			        srcNode:'#dropmenu4',
+			        trigger : '#dropmenu_4',
+			        triggerType : 'mouse',
+			        align : {
+			            node : '#dropmenu_4',
+			            points : ['br', 'tr'],
+			            offset : [0, 0]
+			        },
+					listeners:{
+						show:function(target){
+							 DOM.toggleClass("#dropmenu_4","selected");
+						},
+						hide:function(target){
+							 DOM.toggleClass("#dropmenu_4","selected");
+						}
+					}
+			    });
+			    
+				if (data.credit){
+					//信誉等级
+					DOM.html('#top_jifen', data.credit.inte_all);
+				}else{
+					DOM.html('#top_jifen', 0);
+				}
+			}
+		});
+		
+		IO({
+			url  : project+'/getUcenterSetting.shtml',
+			type : 'post',
+			dataType : 'json',
+			success : function(data) {	
+				if(data.setting){
+					//右上角客服电话
+					var data=data.setting;
+					DOM.html("#kf_phone",data.kf_phone);
+					//右上角帮助地址
+					DOM.attr('#help_url',"href", data.help_url);
+					//左上角logo
+					if(data.logo_path&&data.logo_path!=''){
+						DOM.style('#top_logo','background',"url(/filepool"+data.logo_path+") no-repeat left center");	
+					}else{
+						DOM.style('#top_logo','background',"url("+project+"/skin/default/bootstrap/images/logo.gif) no-repeat left center");
+					}
+					//客服qq
+					if(data.kf_qq&&data.kf_qq!=''){
+						DOM.attr('#footer_kfqq',"href", "http://wpa.qq.com/msgrd?v=3&uin="+data.kf_qq+"&site=qq&menu=yes");	
+						DOM.attr('#footer_kfqq',"target", "_blank");	
+					}
+				}else{
+					DOM.style('#top_logo','background',"url("+project+"/skin/default/bootstrap/images/logo.gif) no-repeat left center");
+				}
+			}
+		});
+
+		//展开
+		Event.on('#zhan_left','click',function(){
+			S.one('#foldbox').show();
+			S.one('#zhan_left').hide();
+			S.one('#shou_right').show();
+		});
+
+		//收起
+		Event.on('#shou_right','click',function(){
+			S.one('#foldbox').hide();
+			S.one('#zhan_left').show();
+			S.one('#shou_right').hide();
+		});
+
+		//控制显示返回顶部按钮的显示和隐藏
+		function gotop(){
+			var h = DOM.height(window);
+			var t = DOM.scrollTop(document);
+			if(t > 0){
+				DOM.style('#gotop','display','');
+			}else{
+				DOM.style('#gotop','display','none');
+			}
+		}
+		gotop();
+		
+		Event.on(window,'scroll',function(){
+			gotop();
+		});
+			
+		Event.on('#gotop','click',function(){
+			DOM.scrollTop(document,0);
+		});
+	});
+</script>	

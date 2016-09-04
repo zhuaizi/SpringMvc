@@ -1,0 +1,39 @@
+#if($!{layouts} == "")
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="pragma" content="no-cache">  
+<meta http-equiv="cache-control" content="no-cache">  
+<meta http-equiv="expires" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">  
+<title>$!{meta_title}</title>
+#parse("/layout/pub.html")
+</head>
+<script type="text/javascript">
+var cur_menu_no="$!{cur_menu_no}";
+if(cur_menu_no!=""){
+	cur_menu_no=cur_menu_no.substring(0,3);
+}
+var server_time="$!{server_time}";
+</script>  
+<body>
+#parse("/layout/header.html")
+<div class="main_container" style="height:auto;">
+#parse("/layout/menu.html")
+<div class="rightconbox">
+#end
+#if($!{com_layout})
+#parse(${com_layout})
+#end
+#if($!{layouts} == "")
+
+<div class="clear"></div>  
+</div>	
+<div class="clear"></div>  
+</div>
+<div class="clear"></div>  
+#parse("/layout/footer.html")
+</body>
+</html>
+#end	

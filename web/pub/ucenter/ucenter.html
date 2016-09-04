@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<meta name="renderer" content="webkit"> <!--解决兼容模式-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--解决兼容模式-->
+		<title>会员中心</title>
+		<!--# include file="/webpage/gzql/inc/pub.html" -->
+		#parse("/inc/pub.html")
+	</head>
+	<script type="text/javascript">
+		var cur_menu_no="";
+		var server_time="$!{server_time}";
+	</script>  
+	<body>
+	<!--# include file="/webpage/gzql/inc/header.html" -->
+	#parse("/inc/header.html")
+	<div class="main_container">
+	#parse("/inc/menu.html")
+	#parse("/inc/main.html")
+	<!--# include file="/webpage/gzql/inc/menu.html" -->
+	<!--# include file="/webpage/gzql/inc/main.html" -->
+	</div>
+	<!--# include file="/webpage/gzql/inc/footer.html" -->
+	#parse("/inc/footer.html")
+	</body>
+</html>

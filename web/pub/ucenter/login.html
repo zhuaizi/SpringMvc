@@ -1,0 +1,219 @@
+ #if($!{layouts} == "")
+
+
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>会员登录</title>
+<!-- 引入公共头 -->
+#parse("/layout/pub.html")
+
+<style>
+.control-label {
+	color: #B94A48;
+}
+</style>
+
+
+</head>
+
+<body style="background: #f2f2f2;">
+	<form id="login_form" action="$!{gsc.context}/login/ajax.shtml" method="post">
+		<div style="background: #fff; padding-top: 30px;">
+			<div class="logo_block">
+				<div class="logo" #if($!{setinfo.logo_path} && $!{setinfo.logo_path}!="" )style="background-image: url('/filepool$!{setinfo.logo_path}')" ;#end>
+					<a href="#">
+						<!--图标背景-->
+					</a>
+				</div>
+				<div class="right">
+					<div class="phone">
+						中心客服电话：<span>$!{setinfo.kf_phone}</span>
+					</div>
+					<div class="help">
+						<a href="$!{setinfo.help_url}" target="_blank">帮助</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<!--头部结束-->
+		<div class="login_big_banner" #if($!{setinfo.bg_path} && $!{setinfo.bg_path}!="" )style="background-image: url('/filepool$!{setinfo.bg_path}')" ;#end>
+			<div style="width: 1200px; margin: 0 auto; position: relative;">
+				<div class="login_box_bg"></div>
+
+				<!--右侧登录模块开始-->
+
+				<div class="login_box">
+					<div class="container">
+						<div class="row tt">会员登录</div>
+						<div class="login_tips alert_div" hidden="true">
+							<div class="tips_arrow_bg"></div>
+							<div class="tips_arrow"></div>
+							<div class="tips_text alert_tip">您填写的帐号或密码不正确，请再次尝试!</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="hidden" name="ref_url" value="$!{ref_url}" /> <input type="hidden" id="v" value="w" /> <input type="text" class="form-control login-input on1" style="color: #fff;" name="username" value="$!{uname}" maxlength="32" placeholder="用户名" msg-type="{type:'bottom',part:9}" data-rules="{required:true,minLength:6,maxLength:16}" data-msg="{required:'用户名不能为空。',minLength:'用户名长度最小6位字符。',length:'且输入不能超过16个字符。'}" />
+								</div>
+							</div>
+						</div>
+						<div class="row login_tips" style="display: none">
+							<div class="col-md-12">&#10008;&nbsp;用户名输入错误</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="password" name="password" class="form-control login-input on2" style="color: #fff;" value="$!{psw}" placeholder="Password" msg-type="{type:'bottom',part:12}" data-rules="{required:true,minLength:6}" data-msg="{required:'密码不能为空。'}" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7">
+								<div class="form-group">
+									<input type="text" class="form-control login-input on3" style="color: #fff;" id="login_code" name="loginverifycode" maxlength="4" msg-type="{type:'bottom',part:12}" data-rules="{required:true,length:4}" data-msg="{required:'验证码不能为空。',length:'输入4个字符的验证码。'}" />
+								</div>
+							</div>
+							<div class="col-md-5" style="padding: 0;">
+								<a href="#" id="a_img_vtcode" title="看不清？点我就好啦。"> <img src="#" id="img_vtcode" style="float: left; width: 80px; height: 30px; margin-top: 3px; overflow: hidden;" />
+								</a>
+							</div>
+						</div>
+
+						<div class="row" style="color: #ddd; font-weight: normal;">
+							<div class="col-md-4" style="padding-right: 0">
+								<div class="radio" style="padding-left: 10px;">
+									<label> <input type="checkbox" value="$!{ru}" id="ru" name="ru" #if($!{ru}== 't')checked="checked" #else #end /> 记住用户名
+									</label>
+								</div>
+							</div>
+							<div class="col-md-4" style="padding-right: 0">
+								<div class="radio" style="padding-left: 10px;">
+									<label> <input type="checkbox" value="$!{rp}" id="rp" name="rp" #if($!{rp}== 't')checked="checked" #else #end /> 记住密码
+									</label>
+								</div>
+							</div>
+							<!-- 
+					<div class="col-md-4 text-right" style="padding-top:10px;margin-left:-10px;"><a href="#" style="color:#ddd;">忘记密码</a></div>
+					 -->
+						</div>
+
+						<div class="row" style="padding-top: 8px;">
+							<div class="col-md-12">
+								<button type="button" id="login_bt" class="btn btn-danger login-btn">登&nbsp;录</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-right" style="font-size: 14px; padding-top: 15px;">
+								<img src="$!{gsc.context}/skin/default/bootstrap/images/icon/etrade_icon13.png" /><a href="#" id="regist" style="color: #ddd;">免费注册</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--右侧登录模块结束-->
+
+			</div>
+		</div>
+
+
+		<div class="login_bottom"></div>
+		<!--内容结束-->
+		<div class="footer">
+			<div class="footer_in">时力永联科技有限公司 版权所有</div>
+		</div>
+
+	</form>
+
+	<script type="text/javascript">
+	
+	KISSY.use("dom,event,etrade/util/form/form",function(S,DOM,Event,Form) {
+		Event.on('#login_code', 'focus', function(e) {
+			var t = e.target;
+			if(t.value == null || t.value.length <=0){
+					DOM.attr('#img_vtcode','src',"$!{gsc.context}/vtcode/image.shtml?type=login&t="+ new Date().getTime());
+			}
+		});
+		
+		Event.on('#login_code', 'keydown', function(e) {
+      		if(e.keyCode==13){
+      			valid();
+      		}
+    	});
+		
+		Event.on('#a_img_vtcode', 'click', function(e) {
+			DOM.attr('#img_vtcode','src',"$!{gsc.context}/vtcode/image.shtml?type=login&t="+ new Date().getTime());
+			return false;
+		});
+		
+		var lg = new Form({
+	 		srcNode	: "#login_form",
+	 		url		: "$!{gsc.context}/login/ajax.shtml",
+	 		baseParam:{},
+	 		callback	: function(text){
+	 			if(text.success){
+	 				
+	 				#if("$!{goback}" != "")
+	 				Event.fire('div[uid="$!{goback}"]','load');
+	 				#else
+	 				self.location.href=text.refUrl;
+	 				#end
+	 			}else{
+	 				//todo
+	 				DOM.html('.alert_tip',text.msg);
+	 				DOM.show('.alert_div');
+	 				DOM.attr('#img_vtcode', 'src',"$!{gsc.context}/vtcode/image.shtml?type=login&t="+ new Date().getTime());
+	 			}
+	 		}
+	 	});
+	 	lg.render();
+	 	function valid(){
+	 		var msg = lg.isValid();
+			if(msg){/*msg非空表示验证不通过*/
+				alert(msg);
+				return ;
+			}
+			lg.submit();
+	 	} 
+	 	function checkRu(){
+			if(DOM.prop("#ru","checked")){
+				DOM.val("#ru","t");
+			}else{
+				DOM.val("#ru","");
+			}
+			
+		}
+		function checkRp(){
+			if(DOM.prop("#rp","checked")){
+				DOM.val("#rp","t");
+			}else{
+				DOM.val("#rp","");
+			}
+		}
+		Event.on('#ru','click',function(e){
+			checkRu();
+		});
+		Event.on('#rp','click',function(e){
+			checkRp();
+		});
+		
+		
+		Event.on('#login_bt','click',function(e){
+			valid();
+		});
+		
+		Event.on('#regist','click',function(e){
+			location.href="/user_reg.shtml";
+		});
+		DOM.attr('#img_vtcode','src',"$!{gsc.context}/vtcode/image.shtml?type=login&t="+ new Date().getTime());
+	});
+</script>
+
+	#else #end #if($!{layouts} == "")
+</body>
+
+</html>
+#end

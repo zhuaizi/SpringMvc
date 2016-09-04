@@ -1,0 +1,32 @@
+.ks-overlay {
+	position:absolute;
+	left:-9999px;
+	top:-9999px;
+}
+.ks-overlay-hidden {
+	visibility: hidden;
+}
+
+.ks-overlay-mask-hidden {
+	display: none;
+}
+
+.ks-overlay-shown {
+	visibility: visible;
+}
+
+.ks-overlay-mask-shown{
+	display: block;
+}
+ 
+.ks-overlay-mask-default-style {
+	background: #444;
+	opacity: 0.7;
+	filter: alpha(opacity = 70);
+	text-align: center;
+}
+
+.ks-overlay-layer-default-style {
+	border: none;
+	background: white;
+}

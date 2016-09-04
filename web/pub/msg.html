@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>提示信息</title>
+	
+<style type="text/css"> 
+body{margin:0 auto; padding:0 auto; background:#e6e6e6; font-size:12px; width:988px;}
+div{margin:0 auto; padding:0 auto;}
+ul{margin:0px; list-style:none; padding:0px;}
+ol{margin:0px; list-style:none; padding:0px;}
+a{text-decoration:none; color:#000000;}
+img{border:none;}
+p{margin:0; padding:0;}
+span{margin:0; padding:0;}
+form{margin:0; padding:0;}
+h3{margin:0; padding:0;}
+
+/*错误提示*/
+.erro-box{margin-top:8px; width:955px; border:#d5d5d5 solid 1px; background:#f0f0f0; height:auto; overflow:hidden;}
+.erro{width:835px; margin:15px auto; height:auto; overflow:hidden;}
+.erro-left{width:64px; height:64px; margin-top:12px; margin-right:30px; overflow:hidden; float:left;}
+h2{margin:0; padding:0;}
+.erro-right{float:left;}
+.erro-tt{margin-bottom:5px;}
+.erro-may{line-height:18px;}
+.erro-may span{font-size:14px; color:#FF0000; line-height:24px;}
+.erro-sec{line-height:20px; font-size:14px;}
+.erro-sec ul li span{}
+.erro-sec ul li a{color:#FF0000; text-decoration:underline;}
+.erro-sec ul li a:hover{color:#FF6600;}
+</style>
+$!{other_msg}
+</head>
+
+<body>
+
+<div class="erro-box">
+<div class="erro">
+<div class="erro-left">
+	#if($!{tip} == "ok")
+		<img src="/sure.gif" />
+	#else
+	<img src="$!{request_pix}/pub/resource/msg_err.gif" />
+	#end
+	</div>
+	<div class="erro-right">
+		<div class="erro-tt"><h2>$msg</h2></div>
+		#if($!{tip} == "error")
+			<div class="erro-may"><span>您可以：</span></div>
+			<div class="erro-sec">
+				<ul>
+				<li>1、请联系客服，申请该权限的开通；</li>
+				<li>2、您需要开通交易权限才能进一步操作；</li>	
+				<li>3、检查您的权限是否足够；</li>	
+				<li>4、检查您目前正在访问的地址是否正确；</li>
+				</ul>
+				<a href="javascript:jumpurl();" class="btn btn-default goback" role="button" id="back">确定</a>
+			</div>
+		#end	
+	</div>
+</div>
+</div>
+<script>
+function jumpurl(){
+  #if( $jumpurl=='back')history.back()#else window.location.href='$jumpurl' #end;
+}
+</script>
+</body>
+</html>

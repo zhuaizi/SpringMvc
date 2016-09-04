@@ -1,0 +1,10 @@
+<div class="form-group">
+	<label class="col-md-$!{data.row_1} control-label" style="text-align:right;">$!{data.dict_name}#if($!{data.isnull})<font style="color:#ff0000;">*</font>£º#else£º#end</label>
+	<div class="row col-md-$!{data.row_2}"> 
+		<select class="form-control#if($!{data.input_row}) col-md-$!{data.input_row}#end"  name="$!{data.val_name}">
+			#foreach($bean in $!{data.resultlist})
+			<option value="$!{bean.key}">$!{bean.value}</option>
+			#end
+		</select>
+	</div>
+</div>

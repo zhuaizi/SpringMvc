@@ -1,0 +1,11 @@
+<div class="row breadbox">
+	<img src="$!{gsc.context}/skin/default/bootstrap/images/bread-icon2.gif" />
+	<span>您当前所在位置：</span>
+		<ol class="breadcrumb" style="background:none;">
+			<li><a href="$!{gsc.context}/financeIndex.shtml">会员中心</a></li>
+			#foreach($bean in $!{data})
+			  <li><a href="#">$!{bean.menu_name}</a></li>
+			  <li><a href="#">$!{bean.child.menu_name}</a></li>
+			#end
+		</ol>
+</div>

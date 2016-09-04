@@ -1,0 +1,43 @@
+.pix-select{  
+	height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;position:relative;cursor:pointer;}
+.input-group-btn .pix-select{border-top-left-radius:0px;border-bottom-left-radius:0px;}
+.pix-select .pix-menu-button-dropdown{position:absolute;top:15px;right:8px;width:10px;height:5px;background:url("../../images/mode/T1J6x_FkFeXXX_ownc-30-40.png") -10px -25px no-repeat}
+.pix-select .pix-button-content{height:24px;overflow:hidden}
+
+.pix-menu-button-open .pix-menu-button-dropdown{background-position:-10px -10px}
+.pix-popupmenu,.ks-menu-button {z-index:2000;position:absolute;}
+.pix-menu{  
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;}
+.pix-menu .pix-menuitem{height:34px;line-height:34px;color:#333;font-size:12px;padding-left:30px;cursor:pointer;overflow:hidden}
+
+.pix-menu .pix-menuitem-hover{color:#f60;background-color:#fff8f3}
+.pix-menu .pix-menuitem-selected{background:url("../../images/mode/T1J8TvFlVbXXXugmZ_-11-8.png") no-repeat 10px 10px;color:#f60;font-weight:bold}
+.pix-popupmenu-shown{
+    visibility: visible;
+}
+
+.pix-popupmenu-hidden{
+    visibility: hidden;
+}

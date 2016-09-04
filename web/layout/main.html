@@ -1,0 +1,348 @@
+<div class="rightconbox">
+  <div class="container" >
+
+<div class="row me_db_welcome">
+	<span class="name" id="login_acct"></span>，欢迎您登录!
+	<span class="credit" id="credit">您当前的信誉：</span>
+	
+</div>
+
+ 
+ 
+ 
+<div class="row" style="background:#f1f2f6;padding-top:15px;">
+          <div class="col-md-3"><div class="me_db_numbox eb1"><span class="me_db_t">账户总额</span><strong>&yen;</strong><span id="money_all"></span></div></div>
+          <div class="col-md-3"><div class="me_db_numbox eb2"><span class="me_db_t">可用余额</span><strong>&yen;</strong><span id="avlb_fund"></span></div></div>
+          <div class="col-md-3"><div class="me_db_numbox eb3"><span class="me_db_t">冻结资金</span> <strong>&yen;</strong><span id="freeze"></span></div></div>
+          <div class="col-md-3" style="margin-right:0"><div class="me_db_numbox eb4"><span class="me_db_t">当前积分</span><span id="inte_all"></span></div></div>
+        </div>
+
+
+<div class="row title1"><span class="tb1"></span><h2>销售交易提醒</h2></div>  
+ 
+<div class="row" style="border:1px solid #e0e0e0;">
+<div class="col-md-4 title2" style="border-right:1px solid #e0e0e0"><span class="tb1"></span><h2>合同提醒</h2></div>
+<div class="col-md-4 title2" style="border-right:1px solid #e0e0e0;"><span class="tb2"></span><h2>挂牌提醒</h2></div>
+<div class="col-md-4 title2"><span class="tb3"></span><h2>竞价提醒</h2></div>
+</div>       
+
+<div class="row index_box1">
+<div class="col-md-4 box_in" style="height:125px;">
+    <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">待生成交收单：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_sell.shtml?menu_no=652110" class="red_num1" id="deli_sell_count" onclick="return openurl(this.href);"></a> 条</div>
+   <div class="col-sm-3 text-right" style="padding:0;">待发货：</div>
+   <div class="col-sm-3" style="padding:0;"><a href="/gzql/contract/contract_mgr_sell.shtml?menu_no=652110" class="red_num1" id="fahuo_count" onclick="return openurl(this.href);"></a> 条</div>
+   </div>
+   
+    <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">待解除合同：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_sell.shtml?menu_no=652110" class="red_num1" id="jcsubs_sell_count" onclick="return openurl(this.href);"></a> 条</div>
+   <div class="col-sm-3 text-right" style="padding:0;">待评价：</div>
+   <div class="col-sm-3" style="padding:0;"><a href="/gzql/appraise/appraisesellmgr.shtml?menu_no=652112" class="red_num1" id="pingj_sell_count" onclick="return openurl(this.href);"></a> 条</div>
+   </div>
+   
+   <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">验货异议：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/objection/objection_manage.shtml?phase_id=1&buyorsell=2&menu_no=652118" class="red_num1" id="yhyy_sell_count" onclick="return openurl(this.href);" ></a> 条</div>
+   <div class="col-sm-3 text-right" style="padding:0;">验票异议：</div>
+   <div class="col-sm-3" style="padding:0;"><a href="/gzql/objection/objection_manage.shtml?phase_id=2&buyorsell=2&menu_no=652119" class="red_num1" id="ypyy_sell_count" onclick="return openurl(this.href);"></a> 条</div>
+   </div>
+   
+   </div>
+<div class="col-md-4 box_in"  style="height:125px;">
+       <div class="row">
+   <div class="col-sm-5" style="padding-left:20px;">待洽谈：<a href="/gzql/discuss/seller_goods_discuss_mgr.shtml?menu_no=652104" class="red_num1" id="discuss_sell_count"  onclick="return openurl(this.href);"></a> 条</div>
+   <div class="col-sm-6">待支付履约金：<a href="/gzql/order/saleordermng.shtml?menu_no=652105" class="red_num1" id="deal_sell_count" onclick="return openurl(this.href);"></a> 条</div>
+   </div>
+   
+      
+   </div>
+<div class="col-md-4 box_in"  style="border:none; height:125px;">
+      <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">竞买（拍卖）选择成交：<a href="/gzql/auction/auction_jmxzcjbuys.shtml?menu_no=643105" class="red_num1" id="cj_buy_count" onclick="return openurl(this.href);"></a> 条</div>
+
+   </div>   
+   </div>
+</div>   
+<!--销售交易提醒结束-->
+
+
+<div class="row title1"><span class="tb2"></span><h2>采购交易提醒</h2></div>  
+
+<div class="row" style="border:1px solid #e0e0e0;">
+<div class="col-md-4 title2" style="border-right:1px solid #e0e0e0"><span class="tb1"></span><h2>合同提醒</h2></div>
+<div class="col-md-4 title2" style="border-right:1px solid #e0e0e0;"><span class="tb2"></span><h2>挂牌提醒</h2></div>
+<div class="col-md-4 title2"><span class="tb3"></span><h2>竞价提醒</h2></div>
+</div>
+
+<div class="row index_box1">
+<div class="col-md-4 box_in" style="height:155px;">
+    <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">待支付货款：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_buy.shtml?menu_no=651110" onclick="return openurl(this.href);" class="red_num1" id="subs_pay_buy_count"></a> 条</div>
+   <div class="col-sm-4 text-right" style="padding:0; width:100px;">待生成交收单：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_buy.shtml?menu_no=651110" onclick="return openurl(this.href);" class="red_num1" id="deli_buy_count"></a> 条</div>
+   </div>
+   
+    <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">待验货：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_buy.shtml?menu_no=651110" onclick="return openurl(this.href);" class="red_num1" id="yanhuo_count"></a> 条</div>
+   <div class="col-sm-4 text-right" style="padding:0; width:100px;">待验票：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_buy.shtml?menu_no=651110" onclick="return openurl(this.href);" class="red_num1" id="yanpiao_count"></a> 条</div>
+   </div>
+   
+   <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">待评价：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/appraise/appraisebuymgr.shtml?menu_no=651112" onclick="return openurl(this.href);" class="red_num1" id="pingj_buy_count"></a> 条</div>
+   <div class="col-sm-4 text-right" style="padding:0; width:100px;">待解除合同：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/contract/contract_mgr_buy.shtml?menu_no=651110" onclick="return openurl(this.href);" class="red_num1" id="jcsubs_buy_count"></a> 条</div>
+   </div>
+   
+      <div class="row">
+   <div class="col-sm-4 text-right" style="padding:0;">验货异议：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/objection/objection_manage.shtml?phase_id=1&buyorsell=1&menu_no=651118" onclick="return openurl(this.href);" class="red_num1" id="yhyy_buy_count"></a> 条</div>
+   <div class="col-sm-4 text-right" style="padding:0; width:100px;">验票异议：</div>
+   <div class="col-sm-2" style="padding:0;"><a href="/gzql/objection/objection_manage.shtml?phase_id=2&buyorsell=1&menu_no=651119" onclick="return openurl(this.href);" class="red_num1" id="ypyy_buy_count"></a> 条</div>
+   </div>
+   
+   </div>
+<div class="col-md-4 box_in" style="height:155px;">
+       <div class="row">
+   <div class="col-sm-5" style="padding-left:20px;">待洽谈：<a href="/gzql/discuss/buyer_goods_discuss_mgr.shtml?menu_no=651104" onclick="return openurl(this.href);" class="red_num1" id="discuss_buy_count"></a> 条</div>
+   <div class="col-sm-6">待支付履约金：<a href="/gzql/order/buyordermng.shtml?menu_no=651105" onclick="return openurl(this.href);" class="red_num1" id="deal_buy_count"></a> 条</div>
+   </div>
+   
+      
+   </div>
+<div class="col-md-4 box_in"  style="border:none; height:155px;">
+      <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">竞卖（招标）选择成交：<a href="/gzql/auction/auction_jmxzcjsells.shtml?menu_no=653103" onclick="return openurl(this.href);" class="red_num1" id="cj_sell_count"></a> 条</div>
+
+   </div>   
+   </div>
+</div>
+
+<!--采购交易提醒结束-->
+
+<div class="row title1"><span class="tb3"></span><h2>数据统计</h2></div> 
+<div class="row" style="border:1px solid #e0e0e0;">
+<div class="col-md-4 title2" style="border-top:3px solid #63b8b2;border-right:1px solid #e0e0e0;"><span class="tb6"></span><h2>当日统计</h2></div>
+<div class="col-md-4 title2" style="border-right:1px solid #e0e0e0;border-top:3px solid #00b4ff;"><span class="tb5"></span><h2>当月统计</h2></div>
+<div class="col-md-4 title2" style="border-top:3px solid #ffa800;"><span class="tb4"></span><h2>当年统计</h2></div>
+</div>
+
+<div class="row index_box1">
+
+<div class="col-md-4 box_in" style="height:90px; ">
+    <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">当日总成交：<span class="red_num2" id="time_day_total"></span></div>
+   <div class="col-sm-2">笔</div>
+   </div>
+   
+      <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">成交总金额：<span class="red_num2" id="payment_day_total"></span></div>
+   <div class="col-sm-2">元</div>
+   </div>
+   
+</div>
+<div class="col-md-4 box_in" style="height:90px;">
+    <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">当月总成交：<span class="red_num2" id="time_month_total"></span></div>
+   <div class="col-sm-2">笔</div>
+   </div>
+   
+      <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">成交总金额：<span class="red_num2" id="payment_month_total"></span></div>
+   <div class="col-sm-2">元</div>
+   </div>
+   
+</div>
+<div class="col-md-4 box_in" style="height:90px;border:none;">
+    <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">当年总成交：<span class="red_num2" id="time_year_total"></span></div>
+   <div class="col-sm-2">笔</div>
+   </div>
+   
+      <div class="row">
+   <div class="col-sm-10" style="padding-left:20px;">成交总金额：<span class="red_num2" id="payment_year_total"></span></div>
+   <div class="col-sm-2">元</div>
+   </div>
+   
+</div>
+
+
+
+</div>
+
+<!--数据统计结束--> 
+
+</div>
+</div>
+
+<script type="text/javascript">
+    var context = "$!{gsc.context}";
+	KISSY.use("io,dom", function(S, IO, DOM) {
+		var bef_div="#con_tx_1";
+		var bef_tab="#tx_1";
+		S.all("div.jytab ul li").on('click',function(e){
+			var el=S.all(this);
+			var div="#"+el.attr("divid");
+			var tab="#"+el.attr("tabid");
+			
+			var div_ob = S.one(div);
+			var tab_ob = S.one(tab);
+			var bef_div_ob= S.one(bef_div);
+			var bef_tab_ob = S.one(bef_tab);
+			if (!DOM.hasClass(el,"hover")) {
+				div_ob.toggleClass('lctdisplay nolctdisplay');
+				tab_ob.toggleClass('hover nohover');
+				
+				
+				bef_div_ob.toggleClass('lctdisplay nolctdisplay');
+				bef_tab_ob.toggleClass('hover nohover');
+				
+				bef_div=div;
+				bef_tab=tab; 
+			 } 
+		});
+	
+	
+		IO({
+			url : context+'/mycentermsg.shtml',
+			type : 'post',
+			data : {
+				sid : ''
+			},
+			dataType : 'json',
+			success : function(data) {
+				//设置会员信誉
+				if(data.msg.cr_image){
+					var top_cr_image = S.one('#credit');
+					for(var i=0; i<data.msg.cr_image; i++){
+						//星星
+						var star = DOM.create('<img src="+context+"/skin/default/bootstrap/images/icon/star_on.png" width="16" height="15" />');
+						top_cr_image.append(star);
+					}
+				}
+				//会员积分
+				if(data.credit){
+					DOM.html('#inte_all',data.credit.inte_all);
+				}else{
+					DOM.html('#inte_all',0);
+				}
+				DOM.html('#login_acct', data.msg.login_acct);
+				DOM.html('#money_all', data.msg.money_all);
+				DOM.html('#avlb_fund', data.msg.avlb_fund);
+				DOM.html('#freeze', data.msg.freeze);
+				DOM.html('#cust_no', "席位号："+data.msg.cust_no+"（注：网银开户签约时需绑定席位号）");
+				DOM.html('#cust_name', "公司名称："+data.msg.cust_name);
+				DOM.html('#ip', "本次登录IP："+data.msg.login_ip);
+				var cr_image = DOM.get('#cr_image');
+				DOM.attr(cr_image, 'src', data.msg.cr_image); 
+				DOM.html('#oper_name', "管理员名称："+data.msg.oper_name);
+				var logo_path = DOM.get('#logo_path');
+				DOM.attr(logo_path, 'src', "/filepool"+data.msg.logo_path); 
+				
+				DOM.html('#visit_time',"上次登录时间："+ data.msg.visit_time);
+				DOM.html('#register_time', "账号注册时间："+data.msg.register_time);
+				DOM.html('#login_acct1', data.msg.login_acct);
+				
+				//现货数据统计
+				DOM.html('#disccss_buy_count', data.msg.disccss_buy_count);
+				DOM.html('#disccss_sell_count', data.msg.disccss_sell_count);
+				DOM.html('#d_disccss_buy_count', data.msg.disccss_buy_count);
+				DOM.html('#d_disccss_sell_count', data.msg.disccss_sell_count);
+				DOM.html('#deal_buy_count', data.msg.deal_buy_count);
+				DOM.html('#subs_pay_buy_count', data.msg.subs_pay_buy_count);
+				DOM.html('#deli_buy_count', data.msg.deli_buy_count);
+				DOM.html('#yanhuo_count', data.msg.yanhuo_count);
+				DOM.html('#yanpiao_count', data.msg.yanpiao_count);
+				DOM.html('#yhyy_buy_count', data.msg.yhyy_buy_count+data.msg.yhyy_daiqr_buy_count);
+				DOM.html('#ypyy_buy_count', data.msg.ypyy_buy_count+data.msg.ypyy_daiqr_buy_count);
+				DOM.html('#pingj_buy_count', data.msg.pingj_buy_count);
+				DOM.html('#deal_sell_count', data.msg.deal_sell_count);
+				DOM.html('#fahuo_count', data.msg.fahuo_count);
+				DOM.html('#deli_sell_count', data.msg.deli_sell_count);
+				DOM.html('#yhyy_sell_count', data.msg.yhyy_sell_count+data.msg.yhyy_daiqr_sell_count);
+				DOM.html('#ypyy_sell_count', data.msg.ypyy_sell_count+data.msg.ypyy_daiqr_sell_count);
+				DOM.html('#pingj_sell_count', data.msg.pingj_sell_count);
+				
+				var xianhuototal=data.msg.disccss_buy_count+data.msg.disccss_sell_count+data.msg.disccss_buy_count+data.msg.disccss_sell_count+data.msg.deal_buy_count
+				+data.msg.subs_pay_buy_count+data.msg.deli_buy_count+data.msg.yanhuo_count+data.msg.yanpiao_count+data.msg.yhyy_buy_count
+				+data.msg.ypyy_buy_count+data.msg.pingj_buy_count+data.msg.deal_sell_count+data.msg.fahuo_count+data.msg.deli_sell_count
+				+data.msg.yhyy_sell_count+data.msg.ypyy_sell_count+data.msg.pingj_sell_count;
+				
+				DOM.html('#xianhuo',xianhuototal);
+				
+				
+				DOM.html('#subs_pay_buy_jj_count', data.msg.subs_pay_buy_jj_count);
+				DOM.html('#deli_buy_jj_count', data.msg.deli_buy_jj_count);
+				DOM.html('#yanhuo_jj_count', data.msg.yanhuo_jj_count);
+				DOM.html('#yanpiao_jj_count', data.msg.yanpiao_jj_count);
+				DOM.html('#yhyy_jj_buy_count', data.msg.yhyy_jj_buy_count);
+				DOM.html('#ypyy_jj_buy_count', data.msg.ypyy_jj_buy_count);
+				DOM.html('#pingj_buy_jj_count', data.msg.pingj_buy_jj_count);
+				DOM.html('#cj_buy_count', data.msg.cj_buy_count);
+				DOM.html('#cj_sell_count', data.msg.cj_sell_count);
+				DOM.html('#deli_sell_jj_count', data.msg.deli_sell_jj_count);
+				DOM.html('#fahuo_jj_count', data.msg.fahuo_jj_count);
+				DOM.html('#yhyy_jj_sell_count', data.msg.yhyy_jj_sell_count);
+				DOM.html('#ypyy_jj_sell_count', data.msg.ypyy_jj_sell_count);
+				DOM.html('#pingj_sell_jj_count', data.msg.pingj_sell_jj_count);
+				
+				
+				
+				var jingjiatotal=data.msg.subs_pay_buy_jj_count+data.msg.deli_buy_jj_count+data.msg.yanhuo_jj_count
+				+data.msg.yanpiao_jj_count+data.msg.yhyy_jj_buy_count+data.msg.ypyy_jj_buy_count+data.msg.pingj_buy_jj_count
+				+data.msg.cj_buy_count+data.msg.cj_sell_count+data.msg.deli_sell_jj_count+data.msg.fahuo_jj_count
+				+data.msg.yhyy_jj_sell_count+data.msg.ypyy_jj_sell_count+data.msg.pingj_sell_jj_count;
+				DOM.html('#jingjia',jingjiatotal);
+				
+				
+				
+				
+				DOM.html('#pay_sell_zc_count', data.msg.pay_sell_zc_count);
+				DOM.html('#baoming_sell_count', data.msg.baoming_sell_count);
+				DOM.html('#send_msg_daohuo_count', data.msg.send_msg_daohuo_count);
+				DOM.html('#pingj_sell_zc_count', data.msg.pingj_sell_zc_count);
+				DOM.html('#baoming_buy_count', data.msg.baoming_buy_count);
+				DOM.html('#sure_buy_zc_count', data.msg.sure_buy_zc_count);
+				DOM.html('#subs_pay_buy_zc_count', data.msg.subs_pay_buy_zc_count);
+				DOM.html('#pingj_buy_zc_count', data.msg.pingj_buy_zc_count);
+				
+				
+				
+				var zhuanchangtotal=data.msg.pay_sell_zc_count+data.msg.baoming_sell_count+data.msg.send_msg_daohuo_count
+				+data.msg.pingj_sell_zc_count+data.msg.baoming_buy_count+data.msg.sure_buy_zc_count+data.msg.subs_pay_buy_zc_count
+				+data.msg.pingj_buy_zc_count;
+				DOM.html('#zhuanchang',zhuanchangtotal);
+				
+				DOM.html('#addr', "公司地址："+data.msg.city_name+data.msg.area_name+data.msg.county_name+data.msg.address);
+				DOM.attr('#addr', 'title',data.msg.city_name+data.msg.area_name+data.msg.county_name+data.msg.address);
+				
+				
+				
+				DOM.html('#time_year_total', data.msg.time_year_total);
+				DOM.html('#payment_year_total', data.msg.payment_year_total ? data.msg.payment_year_total : '0.00');
+				DOM.html('#time_month_total', data.msg.time_month_total);
+				DOM.html('#payment_month_total', data.msg.payment_month_total ? data.msg.payment_month_total : '0.00');
+				DOM.html('#time_day_total', data.msg.time_day_total);
+				S.log(data.msg.payment_day_total);
+				DOM.html('#payment_day_total', data.msg.payment_day_total ?  data.msg.payment_day_total : '0.00');
+				
+				DOM.html('#jcsubs_buy_count',data.msg.jcsubs_buy_count);
+				DOM.html('#jcsubs_sell_count',data.msg.jcsubs_sell_count);
+				DOM.html('#discuss_buy_count',data.msg.discuss_buy_count);
+				DOM.html('#discuss_sell_count',data.msg.discuss_sell_count);
+			}
+		});
+	});
+
+
+function openurl(url){
+	self.location.href=url;
+	return false;
+}
+</script>
+<div class="clear"></div>      

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings
+		cacheModelsEnabled="true" 
+		enhancementEnabled="true" 
+		lazyLoadingEnabled="true" 
+		errorTracingEnabled="true" 
+		maxRequests="256" 
+		maxSessions="50" 
+		maxTransactions="20" 
+		useStatementNamespaces="true" 
+		/>
+
+	<typeHandler jdbcType="CLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler" />
+	<typeHandler jdbcType="NCLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler" />
+	<typeHandler jdbcType="BLOB" javaType="java.lang.Byte" callback="org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler" />
+
+	<!-- 必须添加词句，sql-map-config-2.dtd中强制的格式规范，必须要有一个sqlMap  -->
+	<sqlMap url="file:///${contextRealPath}/WEB-INF/config/empty/empty.xml"/>
+
+</sqlMapConfig>
+  

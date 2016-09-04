@@ -1,0 +1,11 @@
+/* Password Strength */
+.pstrength-container { padding-top:6px;width:200px;clear:both;overflow:hidden; }
+.pstrength-bar { height:14px;line-height:14px; }
+.pstrength-bar div { float:left;width:60px;margin-right:1px;text-align:center;color:#fff;background:#ffd099; }
+.pstrength-weak .pstrength-bar-weak,
+.pstrength-middle .pstrength-bar-weak,
+.pstrength-strong .pstrength-bar-weak,
+.pstrength-middle .pstrength-bar-middle,
+.pstrength-strong .pstrength-bar-middle,
+.pstrength-strong .pstrength-bar-strong { background:#f60; }
+.pwdstrength-popup{display:none;position:absolute;background-color:#f9f9f9;border:1px solid #c2c8c8;padding:10px}.pwdstrength-popup .popup-arrow{position:absolute;left:-8px;top:50%;z-index:9;margin-top:-5px;width:0;height:0;font-size:0;line-height:0;border-left:0 solid #c2c8c8;border-right:8px solid #c2c8c8;border-top:5px dashed transparent;border-bottom:5px dashed transparent}.pwdstrength-popup .popup-arrow-padding{position:absolute;left:-6px;top:50%;z-index:10;margin-top:-5px;content:"";width:0;height:0;font-size:0;line-height:0;border-left:0 solid #c2c8c8;border-right:8px solid #f9f9f9;border-top:5px dashed transparent;border-bottom:5px dashed transparent}.pwdstrength-popup .popup-content .strenth-wrap{width:300px;height:10px;border:1px solid #F0F0F0;display:inline-block;vertical-align:middle}.pwdstrength-popup .popup-content .strength-bar{display:block;height:100%}
